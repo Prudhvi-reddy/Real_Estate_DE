@@ -91,7 +91,11 @@ async def run(pw):
             soup = BeautifulSoup(content, "html.parser")
 
             data['pictures'] = extract_picture(soup.find("div", {"data-rf-test-id": "mediaBrowser"}))
+            data['beds'] = soup.find("div", {"data-rf-test-id": "abp-beds"}).text
+            data['baths'] = soup.find("div", {"data-rf-test-id": "abp-baths"}).text
+            data['sqft'] = soup.find("div", {"data-rf-test-id": "abp-sqFt"}).text
 
+            
             print(data)
             break
 
