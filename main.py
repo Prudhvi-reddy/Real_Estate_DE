@@ -2,6 +2,10 @@ import asyncio
 import random
 from playwright.async_api import async_playwright, TimeoutError as PlaywrightTimeoutError
 from bs4 import BeautifulSoup
+from kafka import KafkaProducer
+import json
+
+
 
 BASE_URL = "https://www.redfin.com"
 LOCATION = "Orlando"
@@ -37,7 +41,7 @@ async def retry_async(func, retries=3, delay=2, *args, **kwargs):
             else:
                 raise
 
-async def run(pw):
+async def run(pw, producer):
     browsers = ['chromium', 'firefox', 'webkit']
     browser_type = random.choice(browsers)
     
@@ -95,17 +99,19 @@ async def run(pw):
             data['baths'] = soup.find("div", {"data-rf-test-id": "abp-baths"}).text
             data['sqft'] = soup.find("div", {"data-rf-test-id": "abp-sqFt"}).text
 
-            
             print(data)
-            break
+            print("Sending data to Kafka")
+            producer.send("properties", value=json.dumps(data).encode('utf-8'))
+            print("Data Sent to Kafka")
+            # break
 
-        print('Navigated! Scraping page content...')
     finally:
         await browser.close()
 
 async def main():
+    producer = KafkaProducer(bootstrap_servers=["localhost:9092"], max_block_ms=5000)
     async with async_playwright() as playwright:
-        await run(playwright)
+        await run(playwright, producer)
 
 if __name__ == '__main__':
     asyncio.run(main())
