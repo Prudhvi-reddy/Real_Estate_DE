@@ -28,7 +28,7 @@ Docker for orchestration of services. -->
 
 ## System Architecture
 
-![Architecture Diagram]("C:\Users\prudh\OneDrive\Desktop\project\Project_outputs_img\Architecture.png")
+![Architecture Diagram]("https://github.com/Prudhvi-reddy/Real_Estate_DE/blob/bs4-1/Images/Architecture.png")
 
 
 
