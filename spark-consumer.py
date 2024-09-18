@@ -6,8 +6,6 @@ from pyspark.sql.functions import from_json, col
 from pyspark.sql.types import StructType, StructField,StringType, ArrayType
 
 
-def create_cassandra_session
-
 def  create_keyspace(session):
     session.execute("""
                     CRAETE KEYSPACE IF NOT EXISTS property_streams
