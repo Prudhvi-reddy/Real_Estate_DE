@@ -1,4 +1,3 @@
-
 # Real Estate Data Engineering
 
 The project involves developing a real-time streaming pipeline for real estate data from a website (Redfin.com). Extracts data by mimicking the browser as human, streaming the data into Kafka and processing the data using Spark before storing it in Cassandra..
@@ -122,4 +121,5 @@ The pipeline is orchestrated using Docker to manage services and dependencies.
 
 - **Networking**: 
   - Services are connected via a Docker network (`datamasterylab`) for effective communication.
+
 
