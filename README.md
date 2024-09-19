@@ -28,11 +28,11 @@ Docker for orchestration of services. -->
 
 ## System Architecture
 
-![Architecture Diagram]("C:\Users\prudh\OneDrive\Desktop\project\Project_outputs_img\Architecture.png")
+![Architecture Diagram](Images/Architecture.png)
 
 
 
-# Project Pipeline: Real Estate Data Engineering Streaming Pipeline
+# Project Pipeline: 
 
 ## 1. Extract Data from Real Estate Website (https://www.redfin.com)
 
@@ -83,6 +83,8 @@ After extraction, data is serialized as JSON and sent to an Apache Kafka topic n
   - Configured to connect to the Kafka broker and publish messages to the "properties" topic for real-time data streaming.
   - Kafka enables real-time streaming of data, allowing the system to process property listings as they are scraped
 
+
+
 ## 3. Data Processing with Spark
 
 The `spark-consumer.py` script processes streamed data from Kafka using Apache Spark.
@@ -123,3 +125,30 @@ The pipeline is orchestrated using Docker to manage services and dependencies.
   - Services are connected via a Docker network (`datamasterylab`) for effective communication.
 
 
+## OutPuts:
+
+**Data getting extracted and sending to kafka**
+
+
+
+![Data getting extracted and sending to kafka](Images/Extarcting_data_and_sending_to_kafka.png)
+
+
+**Kafka Broker Getting Details as "Properties"**
+
+![Kafka Broker Getting Details as "Properties"](Images/kafka_broker_getting_properties.png)
+
+
+**Brokers Overview**
+
+![Brokers overview in control center](Images/Brokers_overview_Control_center.png)
+
+
+**Properties DETAILS are getting transmitted as MESSAGES**
+
+![Properties are getting transmitted as MESSAGES](Images/Properties_messages_controlcenter.png)
+
+
+**Topics Key Value Pair**
+
+![Topics Key value](Images/Topics_key_value_CC.png)
